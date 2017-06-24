@@ -1,6 +1,6 @@
 ## 路由定義
 
-> routes/web.php
+> 路徑: routes/web.php
 
 ```php
 Route::get('/', function () {
