@@ -18,13 +18,12 @@ Route::get('/', 'WelcomeController@index');
 
 ## 路由參數
 
-{id} $id 可以使用不同名稱，不過為了好維護請取相同名稱
-
 ```php
 Route::get('user/{id}/friends', function ($id) {
    //
 });
 ```
+> {id} $id 可以使用不同名稱，不過為了好維護請取相同名稱
 
 ## 路由動詞
 
