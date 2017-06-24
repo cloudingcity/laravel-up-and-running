@@ -43,3 +43,5 @@ class Dashboard extends Controller
     }
 }
 ```
+
+## Route Prefixes
