@@ -79,8 +79,29 @@ Route::get('/', 'ControllerA@index');
 
 Route::group(['namespace' => 'API'], function () {
     // App\Http\Controllers\API\ControllerA
-    Route::get('api/', 'ControllerB@index');
+    Route::get('api/', 'ControllerA@index');
 });
 ```
+
+## Name Prefixes
+
+```php
+Route::group(['as' => 'users.', 'prefix' => 'users'], function () {
+    Route::group(['as' => 'comments.', 'prefix' => 'comments'], function () {
+        Route::get('{id}', 'ControllerA@index')->name('show'); // users.comments.show
+    });
+});
+```
+
+# 5.4
+
+```php
+Route::as('users.')->prefix('users')->group(function () {
+    Route::as('comments.')->prefix('users')->group(function () {
+        Route::get('{id}', 'ControllerA@index')->name('show'); // users.comments.show
+    });
+});
+```
+
 
 
