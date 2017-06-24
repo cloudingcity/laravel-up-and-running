@@ -56,7 +56,7 @@ Route::get('members/{id}', function ($id) {
 
 ## 路由群組
 
-```
+```php
 Route::get([], function () {
     Route::get('get', functino () {
         return 'Hello';
@@ -68,3 +68,6 @@ Route::get([], function () {
 ```
 
 ### 中介層
+
+
+
