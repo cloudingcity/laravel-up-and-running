@@ -11,7 +11,7 @@ Route::group([], function () {
 });
 ```
 
-## 中介層
+## Middleware
 
 限制訪客可使用的網站區域
 
@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 ```
 
-將中介層附加到 Controller 比在路由中定義還明確，`only()` `except()` 來定義權限。
+將 Middleware 附加到 Controller 比在路由中定義還明確，`only()` `except()` 來定義權限。
 
 ```php
 class Dashboard extends Controller
