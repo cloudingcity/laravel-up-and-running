@@ -57,4 +57,14 @@ Route::group(['prefix' => 'api'], function () {
 });
 ```
 
-## 12313
+## Sub-Domain Routing
+
+```php
+Route::group(['domain' => '{account}.myapp.com']function () {
+    Route::get('user/{id}', function ($account, $id) {
+        //
+    });
+});
+```
+
+> 群組任何參數會被傳入群組內的入由方法前幾個參數
