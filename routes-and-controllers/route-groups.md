@@ -68,3 +68,19 @@ Route::group(['domain' => '{account}.myapp.com']function () {
 ```
 
 > 群組任何參數會被傳入群組內的入由方法前幾個參數
+
+## Namespaces
+
+免於冗長的控制器參照
+
+```php
+// App\Http\Controllers\ControllerA
+Route::get('/', 'ControllerA@index');
+
+Route::group(['namespace' => 'API'], function () {
+    // App\Http\Controllers\API\ControllerA
+    Route::get('api/', 'ControllerB@index');
+});
+```
+
+
