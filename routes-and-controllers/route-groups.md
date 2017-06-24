@@ -48,6 +48,11 @@ class Dashboard extends Controller
 
 ```php
 Route::group(['prefix' => 'api'], function () {
-    Route::get('get');
+    Route::get('/', function () {
+        // /api
+    });
+    Route::get('/users', function () {
+        // /api/users
+    });
 });
 ```
