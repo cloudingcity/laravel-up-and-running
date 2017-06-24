@@ -1,12 +1,12 @@
-# 路由定義
-
-> 路徑: routes/web.php
+# Route Definitions
 
 ```php
 Route::get('/', function () {
     return 'Hello World';
 });
 ```
+
+> 路徑: routes/web.php
 
 ## 路由處理
 
@@ -28,12 +28,22 @@ Route::get('user/{id}/friends', function ($id) {
 ## 路由動詞
 
 ```php
-Route::get('/', function () {});
-Route::post('/', function () {});
-Route::put('/', function () {});
-Route::delete('/', function () {});
-Route::any('/', function () {});
-Route::match('/', function () {});
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+```
+
+```php
+Route::match(['get', 'post'], '/', function () {
+    //
+});
+
+Route::any('foo', function () {
+    //
+});
 ```
 
 ## 選用路由
