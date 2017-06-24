@@ -74,12 +74,12 @@ Route::group(['domain' => '{account}.myapp.com']function () {
 免於冗長的控制器參照
 
 ```php
-// App\Http\Controllers\ControllerA
-Route::get('/', 'ControllerA@index');
+// App\Http\Controllers\API\ControllerA
+Route::get('/api', 'API.ControllerA@index');
 
 Route::group(['namespace' => 'API'], function () {
     // App\Http\Controllers\API\ControllerA
-    Route::get('api/', 'ControllerA@index');
+    Route::get('/api', 'ControllerA@index');
 });
 ```
 
