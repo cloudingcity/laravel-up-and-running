@@ -8,6 +8,14 @@ Route::get('/', function () {
 });
 ```
 
+## 路由處理
+
+將請求傳到 App\Http\Controllers\WelcomeController Controller 的 index() 方法
+
+```php
+Route::get('/', 'WelcomeController@index');
+```
+
 ## 路由動詞
 
 ```php
