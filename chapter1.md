@@ -52,6 +52,8 @@ Route::get('members/{id}', function ($id) {
 })->name('members.show');
 ```
 
+---
+
 ## 路由群組
 
 ```
