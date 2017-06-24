@@ -1,4 +1,4 @@
-## 路由定義
+# 路由定義
 
 > 路徑: routes/web.php
 
@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 ```
 
-### 路由動詞
+## 路由動詞
 
 ```php
 Route::get('/', function () {});
@@ -19,7 +19,7 @@ Route::any('/', function () {});
 Route::match('/', function () {});
 ```
 
-### 選用路由
+## 選用路由
 
 ```php
 Route::get('users/{id?}', function ($id = 'fallbackId') {
@@ -27,7 +27,7 @@ Route::get('users/{id?}', function ($id = 'fallbackId') {
 });
 ```
 
-### 正規路由
+## 正規路由
 
 參數符合才匹配
 
@@ -42,7 +42,7 @@ Route::get('/users/{id}/{slug}', function ($id, $slug) {
 })->where(['id' => '[0-9]+', 'slug' => '[A-Za-z]+']);
 ```
 
-### 路由名稱
+## 路由名稱
 
 ```php
 Route::get('members/{id}', function ($id) {
