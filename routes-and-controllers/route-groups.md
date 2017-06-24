@@ -75,10 +75,12 @@ Route::group(['domain' => '{account}.myapp.com']function () {
 
 ```php
 // App\Http\Controllers\API\ControllerA
+
 Route::get('/api', 'API\ControllerA@index');
 
+// same as
+
 Route::group(['namespace' => 'API'], function () {
-    // App\Http\Controllers\API\ControllerA
     Route::get('/api', 'ControllerA@index');
 });
 ```
