@@ -1,3 +1,6 @@
-# My Awesome Book
+# Laravel Up and Running
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+> version 5.3+
+
+筆記一下
+
