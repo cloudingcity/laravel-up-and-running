@@ -36,6 +36,8 @@ php artisan make:controller TasksController --resource
 
 ## 取得用戶輸入
 
+### Input 靜態介面
+
 ```php
 <?php
 
@@ -52,6 +54,31 @@ class TasksController extends Controller
         $task = new Task;
         $task->title = Input::get('title');
         $task->description = Input::get('description');
+        $task->save();
+
+        return redirect('tasks');
+    }
+}
+```
+
+### Request 注入
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Task;
+use Illuminate\Http\Request;
+
+class TasksController extends Controller
+{
+
+    public function store(Request $request)
+    {
+        $task = new Task;
+        $task->title = $request->title;
+        $task->description = $request->description;
         $task->save();
 
         return redirect('tasks');
