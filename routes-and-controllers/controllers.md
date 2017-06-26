@@ -10,6 +10,7 @@ php artisan make:controller TasksController
 
 ```php
 // routes/web.php
+
 Route::get('/', 'TasksController@index');
 ```
 

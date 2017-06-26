@@ -15,6 +15,8 @@ Route::get('/', function() {
    return view('home', ['name' => 'Jack']);
 });
 
+// same as
+
 Route::get('/', function() {
    return view('home')->with('name', 'Jack');
 });
