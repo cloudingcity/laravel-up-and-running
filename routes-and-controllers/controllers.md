@@ -249,6 +249,26 @@ Route::get('redirect', function () {
 });
 ```
 
+### redirect()->with()
+
+當轉址到不同網頁需要傳一些資料時，可以存入session。
+
+```php
+Route::post('user/profile', function () {
+   return redirect('dashboard')->with('status', 'Profile updated!') ;
+});
+```
+
+之後可用 helper function session()
+
+```html
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status')}}
+    </div>
+@endif
+```
+
 ### Other redirect->xxx()
 
 - `back()`: 上一頁
