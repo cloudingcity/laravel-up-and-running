@@ -147,8 +147,23 @@ Route::resource('tasks', 'TasksController');
 ### Implicit Binding
 
 要使用 Route Model Binding 為路由參數取一個該模型獨有的名稱，接著在 closure/controller method 裡 typehint 那個參數，並且使用相同變數名稱。
+
 ```php
 Route::get('/tasks/{task}', function (App\Task $task) {
     return $task;
 });
 ```
+
+因為路由參數 ({task}) 和方法參數 ($task) 相同，Laravel 會自動解析為 Route Model Binding。
+
+#### Customizing The Key Name
+
+讓預設不是用 id 尋找，而是自訂 key name
+
+```php
+public function getRouteKeyName()
+{
+    return 'title';
+}
+```
+> 路徑: App/Task.php
