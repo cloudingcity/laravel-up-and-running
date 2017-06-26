@@ -205,3 +205,22 @@ php artisan route:clear
 
 建議在server上在使用，每次重新 deploy 時在執行 `route:cache`。
 
+## Form Method Spoofing
+
+```html
+<form action="/tasks/1" method="POST">
+    {{ method_field('DELETE') }}
+    <!-- or -->
+    <input type="hidden" name="_method" value="DELETE">
+</form>
+```
+
+## CSRF Protection
+
+```html
+<form action="/tasks/1" method="POST">
+    {{ csrf_field() }}
+    <!-- or -->
+    <input type="hidden" name="_token" value="{{ csrf_token()}}">
+</form>
+```
