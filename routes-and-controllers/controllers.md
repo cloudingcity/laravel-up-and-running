@@ -167,3 +167,24 @@ public function getRouteKeyName()
 }
 ```
 > 路徑: App/Task.php
+
+### Explicit Binding
+
+自訂路由模型綁定，在`App\Providers\RouteServiceProvider` `boot()` 中定義
+
+```php
+public function boot()
+{
+    parent::boot();
+
+    Route::model('user', App\User::class);
+}
+```
+
+```php
+Route::get('profile/{user}', function (App\User $user) {
+    //
+});
+```
+
+當一個路由有名為 {user} 的參數時，就會自動解析回傳 User instance。
