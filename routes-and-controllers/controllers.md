@@ -28,12 +28,6 @@ class TasksController extends Controller
 }
 ```
 
-## 產生 resource controller
-
-```
-php artisan make:controller TasksController --resource
-```
-
 ## 取得用戶輸入
 
 ### Input 靜態介面
@@ -97,7 +91,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['title'];
+    protected $guarded = ['id'];
 }
 ```
 > 路徑: app/Task.php
@@ -120,3 +114,31 @@ class TasksController extends Controller
     }
 }
 ```
+
+## Resource Controllers
+
+### 產生
+
+```
+php artisan make:controller TasksController --resource
+```
+
+### 綁定
+```php
+Route::resource('tasks', 'TasksController');
+```
+
+### 方法
+
+| Verb      | URI                | Action    | Route Name    |
+|-----------|--------------------|-----------|---------------|
+| GET       | /tasks             | index()   | tasks.index   |
+| GET       | /tasks/create      | create()  | tasks.create  |
+| POST      | /tasks             | store()   | tasks.store   |
+| GET       | /tasks/{task}      | show()    | tasks.show    |
+| GET       | /tasks/{task}/edit | edit()    | tasks.edit    |
+| PUT/PATCH | /tasks/{task}      | update()  | tasks.update  |
+| DELETE    | /tasks/{task}      | destroy() | tasks.destroy |
+
+> 列出所有路由
+> php artisan route:list
