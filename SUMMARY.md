@@ -4,7 +4,7 @@
 * Routing and Controllers
   * [Route Definitions](01-routes_and_controllers/01-route_definitions.md)
   * [Route Groups](01-routes_and_controllers/02-route_groups.md)
-  * [Views](01-routes_and_controllers/03_views.md)
+  * [Views](01-routes_and_controllers/03-views.md)
   * [Controllers](01-routes_and_controllers/04-controllers.md)
   * [Route Model Binding](01-routes_and_controllers/05-route_model_binding.md)
   * [Route Caching](01-routes_and_controllers/06-route_caching.md)
