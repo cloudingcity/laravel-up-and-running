@@ -28,3 +28,9 @@ class TasksController extends Controller
 }
 ```
 
+## 產生 resource  controller
+
+```
+php artisan make:controller TasksController --resource
+```
+
