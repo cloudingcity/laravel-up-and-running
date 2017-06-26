@@ -85,3 +85,37 @@ class TasksController extends Controller
     }
 }
 ```
+
+### Model Create
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    protected $fillable = ['title'];
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Task;
+
+class TasksController extends Controller
+{
+
+    public function store()
+    {
+        Task::create(request(['title', 'description']));
+
+        return redirect('/');
+    }
+}
+```
