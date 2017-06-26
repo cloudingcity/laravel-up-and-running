@@ -287,6 +287,10 @@ Route::post('user/profile', function () {
 <input type="text" name="username" value="{{ old('username') }}">
 ```
 
+### redirect()->withErrors()
+
+自動與轉址目的網頁 view 分享 `$error` 變數
+
 ### Other redirect->xxx()
 
 - `back()`: 上一頁
