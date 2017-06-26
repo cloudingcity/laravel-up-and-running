@@ -100,6 +100,7 @@ class Task extends Model
     protected $fillable = ['title'];
 }
 ```
+> 路徑: app/Task.php
 
 ```php
 <?php
@@ -115,7 +116,7 @@ class TasksController extends Controller
     {
         Task::create(request(['title', 'description']));
 
-        return redirect('/');
+        return redirect('tasks');
     }
 }
 ```
