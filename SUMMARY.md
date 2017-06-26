@@ -11,4 +11,7 @@
   * [Form Method Spoofing](routes-and-controllers/form-method-spoofing.md)
   * [CSRF Protection](routes-and-controllers/csrf-protection.md)
   * [Redirects](routes-and-controllers/redirects.md)
+  * [Aborting the Request](routes-and-controllers/aborting-the-request.md)
+  * [Custom Responses](routes-and-controllers/custom-responses.md)
+
 
