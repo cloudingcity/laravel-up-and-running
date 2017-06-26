@@ -14,7 +14,6 @@ Route::get('/', 'TasksController@index');
 ```
 
 ```php
-<?php
 // app/Http/Controllers/TasksController.php
 
 namespace App\Http\Controllers;
