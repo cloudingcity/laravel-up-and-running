@@ -140,5 +140,4 @@ Route::resource('tasks', 'TasksController');
 | PUT/PATCH | /tasks/{task}      | update()  | tasks.update  |
 | DELETE    | /tasks/{task}      | destroy() | tasks.destroy |
 
-> 列出所有路由
-> php artisan route:list
+> 列出所有路由: php artisan route:list
