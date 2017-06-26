@@ -141,3 +141,14 @@ Route::resource('tasks', 'TasksController');
 | DELETE    | /tasks/{task}      | destroy() | tasks.destroy |
 
 > 列出所有路由: php artisan route:list
+
+## Route Model Binding
+
+### Implicit Binding
+
+要使用 Route Model Binding 為路由參數取一個該模型獨有的名稱，接著在 closure/controller method 裡 typehint 那個參數，並且使用相同變數名稱。
+```php
+Route::get('/tasks/{task}', function (App\Task $task) {
+    return $task;
+});
+```
