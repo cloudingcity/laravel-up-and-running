@@ -227,3 +227,35 @@ php artisan route:clear
 
 ## Redirects
 
+### redirect()->to()
+
+```php
+Route::get('redirect', function () {
+    return redirect()->to('home') ;
+
+    // or
+
+    return redirect('home');
+});
+```
+
+### redirect()->route()
+
+指定為路由名稱
+
+```php
+Route::get('redirect', function () {
+    return redirect()->route('tasks.show', ['id' => 1]);
+});
+```
+
+### Other redirect->xxx()
+
+- `back()`: 上一頁
+- `home()`: 轉址到名稱 home 的路由
+- `refresh()`: 轉址到同頁面
+- `away()`: 轉址到外部URL，不使用預設URL驗證
+- `secure()`: 同 secure 參數設定為 true 的 to()
+- `action()`: 轉址controller method，redirect()->action('TasksController@index')
+- `guest()`:
+- `intended()`:
