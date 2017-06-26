@@ -13,5 +13,6 @@
   * [Redirects](01-routes-and-controllers/09-redirects.md)
   * [Aborting the Request](01-routes-and-controllers/10-aborting-the-request.md)
   * [Custom Responses](01-routes-and-controllers/11-custom-responses.md)
+  * [Testing](01-routes-and-controllers/12-testing.md)
 
 
