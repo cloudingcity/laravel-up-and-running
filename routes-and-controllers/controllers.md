@@ -259,7 +259,7 @@ Route::post('user/profile', function () {
 });
 ```
 
-之後可用 helper function session()
+之後可用 helper function `session()`
 
 ```html
 @if (session('status'))
@@ -267,6 +267,24 @@ Route::post('user/profile', function () {
         {{ session('status')}}
     </div>
 @endif
+```
+
+### redirect()->withInput()
+
+有時候會需要回傳使用者輸入
+
+```php
+Route::post('user/profile', function () {
+   // Validate the request
+
+   return back()->withInput();
+});
+```
+
+用 `old()` 取得舊輸入
+
+```php
+<input type="text" name="username" value="{{ old('username') }}">
 ```
 
 ### Other redirect->xxx()
