@@ -40,3 +40,49 @@ view()->composer('partials.sidebar', function ($view) {
 });
 ```
 
+> 可使用陣列，partials.* 綁定多個
+
+## 使用類別的 view composer
+
+最複雜也最靈活，建立一個專用類別給 view composer 使用。
+
+```php
+<?php
+
+namespace App\Http\ViewComposers;
+
+use App\Post;
+use Illuminate\Contracts\View\View;
+
+class RecentPostsComposer
+{
+    private $posts;
+
+    public function __construct(Post $posts)
+    {
+        $this->posts = $posts;
+    }
+
+    public function compose(View $view)
+    {
+        $view->with('posts', $this->posts->recent());
+    }
+}
+```
+
+注入 Post Model，當這個 composer 被呼叫時，會執行 `composer()` 方法。
+
+### view composer 綁定
+
+```php
+    public function boot()
+    {
+        view()->composer(
+            'dashboard',
+            \App\Http\ViewComposers\RecentPostsComposer::class
+        );
+    }
+```
+
+## Blade 服務注入
+
