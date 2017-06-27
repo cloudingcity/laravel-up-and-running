@@ -1,6 +1,6 @@
 # Control Structures
 
-## 條件
+## If Statements
 
 ### @if
 
@@ -26,7 +26,7 @@ Blade 的 `@if` 會被編譯成 `<?php if ($condition): ?>`，`@else`、`@elisei
 @endunless
 ```
 
-## 迴圈
+## Loops
 
 ### @for @foreach @while
 
@@ -54,4 +54,47 @@ Blade 的 `@if` 會被編譯成 `<?php if ($condition): ?>`，`@else`、`@elisei
 @empty
     <p>No users</p>
 @endforelse
+```
+
+### The Loop Variable
+
+當使用 `@foreach` `@forelse` 時可使用 `$loop` 變數。
+
+```html
+@foreach ($users as $user)
+    @if ($loop->first)
+        This is the first iteration.
+    @endif
+
+    @if ($loop->last)
+        This is the last iteration.
+    @endif
+
+    <p>This is user {{ $user->id }}</p>
+@endforeach
+```
+
+| Property         | Description                     |
+|------------------|---------------------------------|
+| $loop->index     | 索引從0開始                     |
+| $loop->iteration | 索引從1開始                     |
+| $loop->remaining | 迴圈還剩下多少個項目            |
+| $loop->count     | 項目數量                        |
+| $loop->first     | 項目是不是第一個，回傳boolean   |
+| $loop->last      | 項目是不是最後一個，回傳boolean |
+| $loop->depth     | 幾層迴圈的第幾層                |
+| $loop->parent    | 參考上層迴圈                    |
+
+## Comments
+
+```html
+{{-- This comment will not be present in the rendered HTML --}}
+```
+
+## PHP
+
+```html
+@php
+    //
+@endphp
 ```
