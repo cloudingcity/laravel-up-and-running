@@ -18,3 +18,4 @@
   * [Echoing Data](02-blade_templating/01-echoing_data.md)
   * [Control Structures](02-blade_templating/02-control_structures.md)
   * [Template Inheritance](02-blade_templating/03-template_inheritance.md)
+  * [View Composers and Service Injection](02-blade_templating/04-view_composers_and_service_injection.md)
