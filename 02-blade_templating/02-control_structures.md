@@ -26,4 +26,32 @@ Blade 的 `@if` 會被編譯成 `<?php if ($condition): ?>`，`@else`、`@elisei
 @endunless
 ```
 
-##
+## 迴圈
+
+### @for @foreach @while
+
+```html
+@for ($i = 0; $i < 10; $i++)
+    The current value is {{ $i }}
+@endfor
+
+@foreach ($users as $user)
+    <p>This is user {{ $user->id }}</p>
+@endforeach
+
+@while (true)
+    <p>I'm looping forever.</p>
+@endwhile
+```
+
+### @forelse
+
+`@forelse` 也是 `@foreach`，但它可以讓你在**被迭代的物件是空的**時編寫應變機制。
+
+```html
+@forelse ($users as $user)
+    <li>{{ $user->name }}</li>
+@empty
+    <p>No users</p>
+@endforelse
+```
