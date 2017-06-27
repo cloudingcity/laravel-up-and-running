@@ -17,3 +17,4 @@
 * Blade Templating
   * [Echoing Data](02-blade_templating/01-echoing_data.md)
   * [Control Structures](02-blade_templating/02-control_structures.md)
+  * [Template Inheritance](02-blade_templating/03-template_inheritance.md)

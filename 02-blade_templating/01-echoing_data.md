@@ -19,3 +19,17 @@
 
 <?= htmlentities($varible) ?>
 ```
+
+## Comments
+
+```html
+{{-- This comment will not be present in the rendered HTML --}}
+```
+
+## PHP
+
+```html
+@php
+    //
+@endphp
+```

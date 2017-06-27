@@ -85,16 +85,9 @@ Blade 的 `@if` 會被編譯成 `<?php if ($condition): ?>`，`@else`、`@elisei
 | $loop->depth     | 幾層迴圈的第幾層                |
 | $loop->parent    | 參考上層迴圈                    |
 
-## Comments
+## or
 
+當不確定變數是否被設定，可能會先使用 `isset()`，Blade 有一中方便的輔助函式 `or`。
 ```html
-{{-- This comment will not be present in the rendered HTML --}}
-```
-
-## PHP
-
-```html
-@php
-    //
-@endphp
+{{ $title or "Default"}}
 ```
