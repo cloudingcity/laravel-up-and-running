@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Routing and Controllers](routing-and-controllers.md)
+* Routing and Controllers
   * [Route Definitions](01-routes_and_controllers/01-route_definitions.md)
   * [Route Groups](01-routes_and_controllers/02-route_groups.md)
   * [Views](01-routes_and_controllers/03-views.md)
@@ -14,13 +14,13 @@
   * [Aborting the Request](01-routes_and_controllers/10-aborting_the_request.md)
   * [Custom Responses](01-routes_and_controllers/11-custom_responses.md)
   * [Testing](01-routes_and_controllers/12-testing.md)
-* [Blade Templating](blade-templating.md)
+* Blade Templating
   * [Echoing Data](02-blade_templating/01-echoing_data.md)
   * [Control Structures](02-blade_templating/02-control_structures.md)
   * [Template Inheritance](02-blade_templating/03-template_inheritance.md)
   * [View Composers and Service Injection](02-blade_templating/04-view_composers_and_service_injection.md)
   * [Custom Blade Directives](02-blade_templating/05-custom_blade_directives.md)
   * [Testing](02-blade_templating/06-testing.md)
-* [Frontend Components]()
-* [Collecting and Handling User Data]()
+* Frontend Components
+* Collecting and Handling User Data
 
