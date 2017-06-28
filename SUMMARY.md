@@ -22,5 +22,5 @@
   * [Custom Blade Directives](02-blade_templating/05-custom_blade_directives.md)
   * [Testing](02-blade_templating/06-testing.md)
 * Frontend Components
-* Collecting and Handling User Data
+* [Collecting and Handling User Data](collecting-and-handling-user-data.md)
 
