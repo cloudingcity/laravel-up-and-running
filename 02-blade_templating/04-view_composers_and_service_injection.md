@@ -46,6 +46,8 @@ view()->composer('partials.sidebar', function ($view) {
 
 最複雜也最靈活，建立一個專用類別給 view composer 使用。
 
+- 注入 Post Model，當這個 composer 被呼叫時，會執行 `compose()` 方法。
+
 ```php
 <?php
 
@@ -70,9 +72,7 @@ class RecentPostsComposer
 }
 ```
 
-注入 Post Model，當這個 composer 被呼叫時，會執行 `composer()` 方法。
-
-### view composer 綁定
+- view composer 綁定
 
 ```php
     public function boot()
@@ -86,3 +86,10 @@ class RecentPostsComposer
 
 ## Blade 服務注入
 
+```php
+@inject('metrics', 'App\Services\MetricsService')
+
+<div>
+    Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
+</div>
+```

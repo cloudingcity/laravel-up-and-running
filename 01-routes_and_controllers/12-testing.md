@@ -59,5 +59,3 @@ class ExampleTest extends DuskTestCase
     }
 }
 ```
-
-> 5.4: [Laravel Dusk](https://mattstauffer.co/blog/introducing-laravel-dusk-new-in-laravel-5-4)
