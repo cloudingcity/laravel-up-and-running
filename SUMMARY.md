@@ -14,13 +14,13 @@
   * [Aborting the Request](01-routes_and_controllers/10-aborting_the_request.md)
   * [Custom Responses](01-routes_and_controllers/11-custom_responses.md)
   * [Testing](01-routes_and_controllers/12-testing.md)
-* Blade Templating
+* [Blade Templating](02-blade_templating/00-blade_templating.md)
   * [Echoing Data](02-blade_templating/01-echoing_data.md)
   * [Control Structures](02-blade_templating/02-control_structures.md)
   * [Template Inheritance](02-blade_templating/03-template_inheritance.md)
   * [View Composers and Service Injection](02-blade_templating/04-view_composers_and_service_injection.md)
   * [Custom Blade Directives](02-blade_templating/05-custom_blade_directives.md)
   * [Testing](02-blade_templating/06-testing.md)
-* Frontend Components
-* [Collecting and Handling User Data](collecting-and-handling-user-data.md)
+* [Frontend Components](frontend-components.md)
+* [Collecting and Handling User Data](04-collecting_and_handling_user_data/00-collecting_and_handling_user_data.md)
 
