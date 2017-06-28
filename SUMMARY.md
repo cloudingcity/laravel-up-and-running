@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* Routing and Controllers
+* [Routing and Controllers](routing-and-controllers.md)
   * [Route Definitions](01-routes_and_controllers/01-route_definitions.md)
   * [Route Groups](01-routes_and_controllers/02-route_groups.md)
   * [Views](01-routes_and_controllers/03-views.md)
@@ -21,3 +21,6 @@
   * [View Composers and Service Injection](02-blade_templating/04-view_composers_and_service_injection.md)
   * [Custom Blade Directives](02-blade_templating/05-custom_blade_directives.md)
   * [Testing](02-blade_templating/06-testing.md)
+* [Frontend Components]()
+* [Collecting and Handling User Data]()
+
