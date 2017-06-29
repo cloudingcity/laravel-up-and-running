@@ -26,3 +26,4 @@
   * [Injecting a Request Object](04-collecting_and_handling_user_data/01-injecting_a_request_object.md)
   * [Route Data](04-collecting_and_handling_user_data/02-route_data.md)
   * [Uploaded Files](04-collecting_and_handling_user_data/03-uploaded_files.md)
+  * [Validation](04-collecting_and_handling_user_data/04-validation.md)

@@ -9,7 +9,7 @@
 
 URL: `/users/1`
 
-- `$request->segments()`: ['users', '1']
+- `$request->segments()`: return ['users', '1']
 - `$request->segment(1)`: return 'users'
 - `$request->segment(2)`: return 1
 
