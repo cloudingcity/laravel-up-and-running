@@ -24,3 +24,5 @@
 * [Frontend Components](frontend-components.md)
 * [Collecting and Handling User Data](04-collecting_and_handling_user_data/00-collecting_and_handling_user_data.md)
   * [Injecting a Request Object](04-collecting_and_handling_user_data/01-injecting_a_request_object.md)
+  * [Route Data](04-collecting_and_handling_user_data/02-route_data.md)
+  * [Uploaded Files](04-collecting_and_handling_user_data/03-uploaded_files.md)

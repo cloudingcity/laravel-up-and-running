@@ -87,7 +87,7 @@ if ($request->has('utm')) {
 
 與 `$request->has()` 差異在於以不同方式處理空值。
 
-|                    | key 存在，值是空 |
+| $request           | key 存在，值是空 |
 |--------------------|------------------|
 | $request->has()    | false            |
 | $request->exists() | true             |
