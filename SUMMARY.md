@@ -23,4 +23,4 @@
   * [Testing](02-blade_templating/06-testing.md)
 * [Frontend Components](frontend-components.md)
 * [Collecting and Handling User Data](04-collecting_and_handling_user_data/00-collecting_and_handling_user_data.md)
-
+  * [Injecting a Request Object](04-collecting_and_handling_user_data/01-injecting_a_request_object.md)
