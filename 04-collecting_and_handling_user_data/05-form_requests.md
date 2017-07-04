@@ -44,7 +44,7 @@ class CreateCommentRequest extends FormRequest
 我們從一個名為 `blogPost` 的路由抓取區段。
 
 ```php
-Route::post('blogPosts/{blogPost}', function() {//});
+Route::post('blogPosts/{blogPost}', function() { });
 ```
 
 我們將路由參數取名為 `blogPost`，所以他可以在 Request 內使用 `$this->route('參數名稱')`。
@@ -57,6 +57,6 @@ Route::post('comments', function (App\Http\Requests\CreateCommentRequest $reques
 });
 ```
 
-它會會驗證用戶輸入，並授權請求。如果輸入是無效的，它會採取 controller 內的 `validate()` 得作法，連同用戶輸入與適當的錯誤訊息一起將用戶轉址回上衣個網頁。
+它會會驗證用戶輸入，並授權請求。如果輸入是無效的，它會採取 controller 內的 `validate()` 得作法，連同用戶輸入與適當的錯誤訊息一起將用戶轉址回上一個網頁。
 
 當用戶未通過驗證時，Laravel 會還傳一個 403 Forbidden 錯誤，不會執行路由程式碼。
