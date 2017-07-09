@@ -29,4 +29,5 @@
   * [Validation](04-collecting_and_handling_user_data/04-validation.md)
   * [Form Requests](04-collecting_and_handling_user_data/05-form_requests.md)
   * [Eloquent Model Mass Assignment](04-collecting_and_handling_user_data/06-eloquent_model_mass_assignment.md)
+  * [Testing](04-collecting_and_handling_user_data/07-testing.md)
 
