@@ -32,3 +32,4 @@
   * [Testing](04-collecting_and_handling_user_data/07-testing.md)
 * [Artisan And Tinker](05-artisan_and_tinker/00-artisan_and_tinker.md)
   * [Basic Artisan Commands](05-artisan_and_tinker/01-basic_artisan_commands.md)
+  * [Writing Custom Artisan Commands](05-artisan_and_tinker/02-writing_custom_artisan_commands.md)
