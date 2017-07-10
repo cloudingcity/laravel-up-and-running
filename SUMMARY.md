@@ -37,3 +37,5 @@
   * [Tinker](05-artisan_and_tinker/04-tinker.md)
   * [Testing](05-artisan_and_tinker/05-testing.md)
 * [Database and Eloquent](06-database_and_eloquent/00-database_and_eloquent.md)
+  * [Configuration](06-database_and_eloquent/01-configuration.md)
+  * [Migrations](06-database_and_eloquent/02-migrations.md)
