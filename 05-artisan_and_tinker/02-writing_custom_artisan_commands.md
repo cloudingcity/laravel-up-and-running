@@ -279,3 +279,44 @@ $this->info('Your command has run successfully.');
 - question(): 亮藍綠色
 - error(): 亮紅色
 - line(): 無色
+
+### 表格輸出
+
+表格元件可輕鬆建立含有資料之 ASCII 表格。
+
+```php
+$header = ['Name', 'Email'];
+
+$data = [
+    ['Dhriti', 'dhriti@amrit.com'],
+    ['Moses', 'moses@gutierez.com']
+];
+
+// or through database
+// $data = App\User:a;;(['name', 'email'])->toArray();
+
+$this->table($header, $data);
+```
+
+輸出:
+```
++--------+--------------------+
+| Name   | Email              |
++--------+--------------------+
+| Dhriti | dhriti@amrit.com   |
+| Moses  | moses@gutierez.com |
++--------+--------------------+
+```
+
+### 進度列
+
+```php
+$totalUnits = 10;
+$this->output->progressStart($totalUnits);
+for ($i = 0; $i < $totalUnits; $i++) {
+    sleep(1);
+
+    $this->output->progressAdvance();
+}
+$this->output->progressFinish();
+```
