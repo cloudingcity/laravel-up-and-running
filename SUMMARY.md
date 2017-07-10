@@ -33,3 +33,5 @@
 * [Artisan And Tinker](05-artisan_and_tinker/00-artisan_and_tinker.md)
   * [Basic Artisan Commands](05-artisan_and_tinker/01-basic_artisan_commands.md)
   * [Writing Custom Artisan Commands](05-artisan_and_tinker/02-writing_custom_artisan_commands.md)
+  * [Calling Artisan Commands in Normal Code](05-artisan_and_tinker/03-calling_artisan_commands_in_normal_code.md)
+  * [Tinker](05-artisan_and_tinker/04-tinker.md)
