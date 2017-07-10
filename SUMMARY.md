@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* Routing and Controllers
+* [Routing and Controllers](01-routes_and_controllers/00-routes_and_controllers.md)
   * [Route Definitions](01-routes_and_controllers/01-route_definitions.md)
   * [Route Groups](01-routes_and_controllers/02-route_groups.md)
   * [Views](01-routes_and_controllers/03-views.md)
@@ -21,7 +21,7 @@
   * [View Composers and Service Injection](02-blade_templating/04-view_composers_and_service_injection.md)
   * [Custom Blade Directives](02-blade_templating/05-custom_blade_directives.md)
   * [Testing](02-blade_templating/06-testing.md)
-* [Frontend Components](frontend-components.md)
+* [Frontend Components](03-frontend-components/00-frontend-components.md)
 * [Collecting and Handling User Data](04-collecting_and_handling_user_data/00-collecting_and_handling_user_data.md)
   * [Injecting a Request Object](04-collecting_and_handling_user_data/01-injecting_a_request_object.md)
   * [Route Data](04-collecting_and_handling_user_data/02-route_data.md)
@@ -36,3 +36,4 @@
   * [Calling Artisan Commands in Normal Code](05-artisan_and_tinker/03-calling_artisan_commands_in_normal_code.md)
   * [Tinker](05-artisan_and_tinker/04-tinker.md)
   * [Testing](05-artisan_and_tinker/05-testing.md)
+* [Database and Eloquent](06-database_and_eloquent/00-database_and_eloquent.md)
