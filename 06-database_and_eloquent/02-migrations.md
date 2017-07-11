@@ -127,15 +127,135 @@ Blueprint 欄位方法:
 
 ## 流暢地建立額外的特性
 
+```php
+Schema::table('user', function (Blueprint $table) {
+    $table->string('email')->nullable()->after('last_name');
+});
+```
+
+以下用來設定欄位額外特性的方法:
+
+- 可讓這個欄位被填入 NULL 值
+    - nullable()
+- 指定預設值內容
+    - default('default content')
+- 將整數欄位標記不帶符號
+    - unsigned()
+- 將這個欄位放在欄位順序第一個
+    - first() (only MySQL)
+- 將欄位放在另一個欄位後面
+    - after(colName)
+- 添加 UNIQUE index
+    - unique()
+- 添加一個 primary key
+    - primary()
+- 添加一個 index
+    - index()
 
 ## 卸除資料表
 
-```
+```php
 Schema::drop('contacts');
 ```
 
 ## 修改欄位
 
+在修改欄位前，composer.json 必須加入 doctrine/dbal 套件，接著 `composer update` 導入。
+
+如果有一個字串欄位名稱 `name`，長度為 255，要改為 100:
+
+```php
+Schema::table('user', function (Blueprint $table) {
+   $table->string('name', 100)->change();
+});
+```
+
+修改欄位為 nullable:
+
+```php
+Schema::table('user', function (Blueprint $table) {
+   $table->string('deleted_at')->nullable()->change();
+});
+```
+
+更改欄位名稱:
+
+```php
+Schema::table('user', function (Blueprint $table) {
+   $table->renameColumn('name', 'newName');
+});
+```
+
+刪除欄位:
+
+```php
+Schema::table('user', function (Blueprint $table) {
+    $table->dropColumn('votes');
+});
+```
+
 ## 索引與外建
 
+### add index
+
+```php
+$table->primary('primary_id'); // primary key 如果使用 increments() 就沒必要
+$table->primary(['first_name', 'last_name']); // 複合鍵
+$table->unique('email'); // 唯一索引
+$table->unique('email', 'potional_custom_index_name'); // 複合鍵
+$table->index('amount'); // 基本索引
+$table->index('amount', 'optional_custom_index_name'); // 基本索引
+```
+
+### delete index
+
+```php
+$table->dropPrimary('contacts_id_primary');
+$table->dropUnique('contacts_email_unique');
+$table->dropIndex('optional_custom_index_name');
+
+// 如果傳遞一個欄位名稱給 dropIndex
+// 會根據生成規則來猜測索引名稱
+$table->dropIndex(['email', 'amount']);
+```
+
+### add/delete foreign key
+
+user_id 欄位 添加外鍵索引方式，參考 users 資料表的 id 欄位:
+
+```php
+$table->foreign('user_id')->rederences('id')->on('users');
+```
+
+指定外鍵限制:
+
+```php
+$table->foreign('user_id')
+    ->references('id')
+    ->on('users')
+    ->onDelete('cascade');
+```
+
+移除索引:
+
+```php
+$table->dropForeign('contacts_user_id_foreign');
+$table->dropForeign(['user_id']);
+```
+
+
 ## 執行 migration
+
+定義 migration 之後，用:
+
+```
+php artisan migrate
+```
+
+會檢查那些尚未執行，並去執行。
+
+- `migrate:install`: 追蹤已經執行與尚未執行的 migration 資料庫表格；當你執行 migration 會自動執行。
+- `migrate:reset`: 回復所有 migration。
+- `migrate:refresh`: `migrate:reset` and then `migrate`。
+- `migrate:rollback`: 回復上次執行 migrate 的 migration，選項 --setp=1 時，會回復指定的 migration 數量。
+- `migrate:status`: 顯示 migraion 表格， Y/N 表示是否執行過。
