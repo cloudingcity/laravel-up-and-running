@@ -86,4 +86,57 @@ $usersOfType = DB::table('users')
 
 ### 限制方法
 
+這些方法會以原樣接收查詢指令，並將它的回傳限制為較小的資料集合；
+
 #### select()
+
+可讓你選擇欄位；
+
+```php
+$emails = DB::table('contacts')
+    ->select('email', 'email2 as second_email')
+    ->get();
+
+// or
+
+$emails = DB::table('contacts')
+    ->select('email')
+    ->addSelect('email2 as second_email');
+    ->get();
+```
+
+#### where
+
+可讓你使用 WHERE 來限制被回傳的東西範圍，預設情況 `where()` 會接收三個參數；
+1. 欄位
+2. 比較運算子
+3. 值
+
+```php
+$newContacts = DB::table('contact')
+    ->where('created_at', '>', Carbon::now()->subDay())
+    ->get();
+```
+
+如果運算子是 `=`，就可以省略；
+
+```php
+$vipContacts = DB::table('contacts')->where('vip', true)->get();
+```
+
+如果想要結合 `where()`，可一一鏈結或傳入一個陣列組陳的陣列；
+
+```php
+$newVips = DB::table('contacts')
+    ->where('vip', true)
+    ->where('created_at', '>', Carbon::now()->subDay());
+
+// or
+$newVips = DB::table('contacts')->where([
+    ['vip', true],
+    ['created_at', '>', Carbon::now()->subDay()].
+]);
+```
+
+#### orWhere()
+
