@@ -40,3 +40,4 @@
   * [Configuration](06-database_and_eloquent/01-configuration.md)
   * [Migrations](06-database_and_eloquent/02-migrations.md)
   * [Seeding](06-database_and_eloquent/03-seeding.md)
+  * [Query Builder](06-database_and_eloquent/04-query_builder.md)
