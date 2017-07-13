@@ -377,4 +377,74 @@ DB::table('users')
 
 ## 聯集
 
+兩個查詢的聯集，做法是先建立它們，接著使用 `union()`，或 `unionAll()` 來取代它們的連集：
+
+```php
+$first = DB::table('contacts')
+    ->whereNull('first_name');
+
+$contacts = DB::table('contacts')
+    ->union($first)
+    ->get();
+```
+
+## 插入
+
+`insert()` 相當簡單。只要對它傳入一個陣列來插入一筆資料列，傳入陣列的陣列插入多筆資料列，並使用 `insertGetId()` 取代 `insert()` 來取得自動遞增的主鍵 ＩＤ：
+
+```php
+$id = DB::table('contacts')->insertGetId([
+    'name' => 'Abe Thomas',
+    'email' => 'athomas1987@gmail.com',
+]);
+
+DB::table('contacts')->insert([
+    ['name' => 'Tamika Johnson', 'email' => 'tamikaj@gmail.com'],
+    ['name' => 'Jim Patterson', 'email' => 'james.patterson@hotmail.com'],
+]);
+```
+
+## 更新
+
+```php
+DB::table('contacts')
+    ->where('points', '>', 100)
+    ->update(['status' => 'vip']);
+```
+
+也可以使用 `increment()`, `decrement()` 方法來快速遞增及遞減欄位。
+
+```php
+DB::table('contacts')->increment('token', 5);
+DB::table('contacts')->decrement('token');
+```
+
+## 刪除
+
+```php
+DB::table('users')
+    ->where('last_login', '<', Carbon::now->subYear())
+    ->delete();
+```
+
+也可以刪除資料表內的資料，並重置自動遞增的 ＩＤ：
+
+```php
+DB::table('contacts')->truncate();
+```
+
+## JSON 操作
+
+如果有 JSON 欄位，可在結構中使用箭頭來取得子系，已更新或選擇投資資料列：
+
+```php
+// 選擇 "options" JSON 欄位的 "isAdmin" 被設為 true 得所有資料
+DB::table('users')->where('options->isAdmin', true)->get();
+
+// 更新所有紀錄，將 "opeions" JSON 欄位的 "verifed" 設為 true
+DB::table('users')->update(['opeions->isVerified', true]);
+```
+
+## 交易
+
 
