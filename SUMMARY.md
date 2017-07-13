@@ -41,3 +41,4 @@
   * [Migrations](06-database_and_eloquent/02-migrations.md)
   * [Seeding](06-database_and_eloquent/03-seeding.md)
   * [Query Builder](06-database_and_eloquent/04-query_builder.md)
+  * [Introduction to Eloquent](06-database_and_eloquent/05-introduction_to_eloquent.md)
