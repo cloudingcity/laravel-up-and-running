@@ -447,4 +447,28 @@ DB::table('users')->update(['opeions->isVerified', true]);
 
 ## 交易
 
+可將一系列要執行的資料庫查詢包裝成一個批次，使你可以選擇回復整個系列的指令。
 
+交易通常會被用來確保一系列相關的指令中，所有指令都有被執行，或沒有任何指令被執行，而非只有部分指令被執行，如果其中一個指令失敗，ORM就會回復整個系列的指令。
+
+```php
+DB::transaction(function () use ($userId, $numVotes) {
+    // 可能失敗的 DB 快取指令
+    DB::table('users')
+        ->where('id', $userId)
+        ->update(['vote' => $numVotes]);
+
+    // 當上述的指令失敗時，快取我們不想要執行的指令
+    DB::table('votes')
+        ->where('user_id', $user_id)
+        ->delete();
+});
+```
+
+如果任何一個指令出錯，其他的都不會被採用。
+
+手動開始和結束交易；
+
+- `DB::beginTransaction()`: 開始
+- `DB::commit()`；結束
+- `DB::rollBack()`；中止
