@@ -86,11 +86,11 @@ $usersOfType = DB::table('users')
 
 ### 限制方法
 
-這些方法會以原樣接收查詢指令，並將它的回傳限制為較小的資料集合；
+這些方法會以原樣接收查詢指令，並將它的回傳限制為較小的資料集合:
 
 #### select()
 
-可讓你選擇欄位；
+可讓你選擇欄位:
 
 ```php
 $emails = DB::table('contacts')
@@ -107,7 +107,7 @@ $emails = DB::table('contacts')
 
 #### where
 
-可讓你使用 WHERE 來限制被回傳的東西範圍，預設情況 `where()` 會接收三個參數；
+可讓你使用 WHERE 來限制被回傳的東西範圍，預設情況 `where()` 會接收三個參數:
 1. 欄位
 2. 比較運算子
 3. 值
@@ -118,13 +118,13 @@ $newContacts = DB::table('contact')
     ->get();
 ```
 
-如果運算子是 `=`，就可以省略；
+如果運算子是 `=`，就可以省略:
 
 ```php
 $vipContacts = DB::table('contacts')->where('vip', true)->get();
 ```
 
-如果想要結合 `where()`，可一一鏈結或傳入一個陣列組陳的陣列；
+如果想要結合 `where()`，可一一鏈結或傳入一個陣列組陳的陣列:
 
 ```php
 $newVips = DB::table('contacts')
@@ -147,7 +147,7 @@ $priorityContacts = DB::table('contacts')
         ->get();
 ```
 
-要建立複雜多條件，可以傳一個 closure 給 `orWhere()`；
+要建立複雜多條件，可以傳一個 closure 給 `orWhere()`:
 
 ```php
 $contacts = DB::table('contacts')
@@ -201,7 +201,7 @@ $goofs = DB::table('contacts')
 
 當對它傳入一個子查詢時，只選擇至少回傳一列資料的資料列。
 
-如果想取得至少留下一個評論的用戶；
+如果想取得至少留下一個評論的用戶:
 
 ```php
 $commenters = DB::table('users')
@@ -226,11 +226,11 @@ $lastNames = DB::table('contacts')
 
 ### 修改方法
 
-這些方法會改變查詢結果的輸出方式，而非只限制它的結果；
+這些方法會改變查詢結果的輸出方式，而非只限制它的結果:
 
 #### orderBy(conName, direction)
 
-排序結果。第二個參數 asc/desc；
+排序結果。第二個參數 asc/desc:
 
 ```php
 $contacts = DB::table('contacts')
@@ -242,7 +242,7 @@ $contacts = DB::table('contacts')
 
 欄位結果分組。having(), havingRaw() 是選用的，可讓你根據群組的屬性來篩選結果。
 
-尋找至少有 30 人的城市；
+尋找至少有 30 人的城市:
 
 ```php
 $populousCities = DB:;table('contacts')
@@ -255,7 +255,7 @@ $populousCities = DB:;table('contacts')
 
 最常用在分頁，定義要回傳多少列，開始回傳前要跳過多少列。
 
-分業系統內的頁數與頁面大小；
+分業系統內的頁數與頁面大小:
 
 ```php
 $page4 = DB::table('contacts')
@@ -274,7 +274,7 @@ $page4 = DB::table('contacts')
 
 ### 結束 / 回傳方法
 
-這些方法會停止查詢鏈，並觸發 SQL 查詢的執行；
+這些方法會停止查詢鏈，並觸發 SQL 查詢的執行:
 
 #### get()
 
@@ -282,7 +282,7 @@ $page4 = DB::table('contacts')
 
 #### first(), firstOrFail()
 
-只取得第一個結果，很像 `get()`，但加入 LIMIT 1；
+只取得第一個結果，很像 `get()`，但加入 LIMIT 1:
 
 ```php
 $newestContact = DB:: table('contacts')
@@ -305,7 +305,7 @@ $contactFile = DB::table('contacts')
 
 #### value()
 
-只會從第一列的單一欄位拉出值。很像 `first()`，但如果只想要一個欄位；
+只會從第一列的單一欄位拉出值。很像 `first()`，但如果只想要一個欄位:
 
 ```php
 $newestContactEmail = DB::table('contacts')
@@ -315,7 +315,7 @@ $newestContactEmail = DB::table('contacts')
 
 #### count()
 
-回傳所有符合的結果整數數量；
+回傳所有符合的結果整數數量:
 
 ```php
 $countVips = DB::table('contacts')
@@ -325,7 +325,7 @@ $countVips = DB::table('contacts')
 
 #### max(), min
 
-回傳最小最大值；
+回傳最小最大值:
 
 ```php
 $higestCost = DB::table('orders')->max('amount');
@@ -333,7 +333,7 @@ $higestCost = DB::table('orders')->max('amount');
 
 #### sum(), avg()
 
-回傳特定欄位所有值的總和或平均值；
+回傳特定欄位所有值的總和或平均值:
 
 ```php
 $averageCost = DB::table('orders')
@@ -343,7 +343,7 @@ $averageCost = DB::table('orders')
 
 ## 在查詢產生器方法裡面使用 DB::raw 來邊寫原生查詢
 
-傳入 `DB::raw()` 給 query builder 取的相同的結果；
+傳入 `DB::raw()` 給 query builder 取的相同的結果:
 
 ```php
 $contacts = DB::table('contacts')
@@ -364,7 +364,7 @@ $users = DB::table('users')
 
 `join()` 會建立一個內部連結。將多個連結一個接著一個連接起來，或使用 `leftJoin()` 來取得一個左聯結。
 
-可將一個 closure 傳入 `join()` 方法來建立更多複雜的聯結；
+可將一個 closure 傳入 `join()` 方法來建立更多複雜的聯結:
 
 ```php
 DB::table('users')
@@ -467,8 +467,8 @@ DB::transaction(function () use ($userId, $numVotes) {
 
 如果任何一個指令出錯，其他的都不會被採用。
 
-手動開始和結束交易；
+手動開始和結束交易:
 
 - `DB::beginTransaction()`: 開始
-- `DB::commit()`；結束
-- `DB::rollBack()`；中止
+- `DB::commit()`: 結束
+- `DB::rollBack()`: 中止
