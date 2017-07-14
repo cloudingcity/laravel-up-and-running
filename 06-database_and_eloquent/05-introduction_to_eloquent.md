@@ -250,3 +250,199 @@ Contact::where('updated_at', '<', Carbon::now()->subYear())->delete();
 
 ### 虛刪除 soft delete
 
+soft delete 會將資料庫的資料列標記為已刪除，但不會真的在資料庫中刪除他們。
+
+自行編寫 soft delete 最困難的部分在於，你寫的 **每一個查詢指令** 都必須排除被 soft delete 的資料。
+
+Eloquent 的 soft delete 功能需要在資料表加入一個 deleted_at 欄位。當啟用 soft delete 時，你寫過的每一個查詢都被限制忽略被 soft delete 的資料。
+
+> 建議必要的時候再使用 soft delete
+
+#### 啟用虛刪除
+
+啟用 soft deleted 需要做三件事:
+1. 在 migration 中增加 `deleted_at` 欄位
+2. 在 Model 中匯入 SoftDeletes traits
+3. 為 $dates 加入 `deleted_at` 欄位
+
+```php
+Schema::create('contacts', function (Blueprint $table) {
+    $table->softDeletes();
+});
+```
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Contact extends Model
+{
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+}
+```
+
+現在每一個 `delete()`, `destroy()` 都會將資料列的 `deleted_at` 欄位設為目前的日期與時間，而非刪除那一列。之後所有的指令都會將那一列排除在結果之外。
+
+#### 納入虛刪除項目的指令
+
+加入被虛刪除的項目:
+
+```php
+$allHistoricContacts = Contact::withTrashed()->get();
+```
+
+使用 `trashed()` 來查看特定實例是否已被虛刪除:
+
+```php
+if ($contact->trashed()) {
+
+}
+```
+
+只取得被虛刪除的項目:
+
+```php
+$deletedContacts = Contact::onlyTrashed()->get();
+```
+
+恢復被虛刪除的項目:
+
+```php
+$contact->restore();
+
+// or
+
+Contact::onlyTrashed()->where('vip', true)->restore();
+```
+
+強制刪除被虛刪除的項目:
+
+```php
+$contact->forceDelete();
+
+// or
+
+Contact::onlyTrashed()->forceDelete();
+```
+
+## 範圍 Query Scopes
+
+Eloquent 的區域與全域範圍可讓你地應預設的篩選器，可以在每次查詢 Model 時，或每次使用特定方法戀來查詢時使用它。
+
+### 區域範圍
+
+```php
+$activeVips = Contact::where('vip', true)->where('trial', false)->get();
+```
+
+不斷編寫這個查詢會覺得很麻煩，這類的定義也會片不在我們的應用程式中。
+
+寫成這樣:
+```php
+$activesVips = Contact::activeVips()->get();
+```
+
+在 Contact 類別定義:
+
+```php
+class Contact
+{
+    public function scopeActiveVips($query)
+    {
+        return $query->where('vip', true)->where('trial', false);
+    }
+}
+```
+
+要定義區域範圍，要在 Eloquent 類別中加入一個以 scope 開頭的方法，接著在首字母大寫的範圍名稱。這個方法會接受一個查詢產生器，並回傳。
+
+也可以定義接收參數的範圍:
+
+```php
+class Contact
+{
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+}
+```
+
+```php
+$friends = Contact::status('friend')->get();
+```
+
+### 全域範圍
+
+虛刪除只有在你讓模型內的每一個指令都忽略被虛刪除的項目時才有效
+
+定義全域範圍的方式有兩種:
+
+1. 使用 closure
+2. 使用整個類別
+
+這兩種方法都需要再 Model boot() 方法內註冊定義的範圍。
+
+
+#### 使用 closure
+
+```php
+class Contact extends Model
+{
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('active', function (Builder $builder) {
+            $builder->where('active', true);
+        });
+    }
+}
+```
+
+加入一個名為 active 的全域範圍，這個模型的每一個指令的範圍都會被限制成 active 為 true。
+
+#### 使用整個類別
+
+建立一個 Illuminate\Database\Eloquent\Scope 類別，代表它將會有一個 `apply()` 方法:
+
+```php
+namespace App\Scopes;
+
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
+class ActiveScope implements Scope
+{
+    public function apply(Builder $builder, Model $model)
+    {
+        return $builder->where('active', true);
+    }
+}
+```
+
+要將這個範圍套用到模型，`boot()` 方法，並使用 static 類別來呼叫 `addGlobalScope()`:
+
+```php
+use App\Scopes\ActiveScope;
+use Illuminate\Database\Eloquent\Model;
+
+class Contact extends Model
+{
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new ActiveScope);
+    }
+}
+```
+
+#### 移除全域範圍
